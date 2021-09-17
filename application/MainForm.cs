@@ -24,8 +24,16 @@ namespace AccountingForTakingPills
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "м")
+            {
+                pictureBox1.Image = Properties.Resources.medsister;
+            } if (textBox1.Text == "ж")
+            {
+                pictureBox1.Image = Properties.Resources.medbrother;
+            }
+            pictureBox1.Visible = true;
             if (textBox1.Text != "")
-            System.Diagnostics.Process.Start($"https://apteka.ru/search/?q={textBox1.Text}&page=1");
+                System.Diagnostics.Process.Start($"https://apteka.ru/search/?q={textBox1.Text}&page=1");
             else
             {
                 MessageBox.Show("Test");

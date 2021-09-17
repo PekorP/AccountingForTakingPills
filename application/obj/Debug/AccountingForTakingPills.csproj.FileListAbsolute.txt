@@ -1,0 +1,20 @@
+D:\C#_projects\AccountingForTakingPills\bin\Debug\AccountingForTakingPills.exe.config
+D:\C#_projects\AccountingForTakingPills\bin\Debug\AccountingForTakingPills.exe
+D:\C#_projects\AccountingForTakingPills\bin\Debug\AccountingForTakingPills.pdb
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.Properties.Resources.resources
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.csproj.GenerateResource.cache
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.csproj.CoreCompileInputs.cache
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.exe
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.pdb
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.MainForm.resources
+D:\C#_projects\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.csproj.AssemblyReference.cache
+D:\Рабочий стол\kursach\AccountingForTakingPills\bin\Debug\AccountingForTakingPills.exe.config
+D:\Рабочий стол\kursach\AccountingForTakingPills\bin\Debug\AccountingForTakingPills.exe
+D:\Рабочий стол\kursach\AccountingForTakingPills\bin\Debug\AccountingForTakingPills.pdb
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.csproj.AssemblyReference.cache
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.MainForm.resources
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.Properties.Resources.resources
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.csproj.GenerateResource.cache
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.csproj.CoreCompileInputs.cache
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.exe
+D:\Рабочий стол\kursach\AccountingForTakingPills\obj\Debug\AccountingForTakingPills.pdb
