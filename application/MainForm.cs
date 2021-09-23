@@ -20,7 +20,26 @@ namespace AccountingForTakingPills
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-          
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                // создаем два объекта User
+                User user1 = new User { Name = "Tom",  Sex = 'М', Login = "asd",  Password = "asd"};
+                Drug drug = new Drug { Name = "test", CategoryId = 1 };
+
+                // добавляем их в бд
+                db.Users.Add(user1);
+                db.Drugs.Add(drug);
+                db.SaveChanges();
+                MessageBox.Show("Объекты успешно сохранены");
+
+                // получаем объекты из бд и выводим на консоль
+                var users = db.Drugs.ToList();
+                MessageBox.Show("Список объектов:");
+                foreach (Drug u in users)
+                {
+                    MessageBox.Show($"{u.Id}.{u.Name} - {u.CategoryId}");
+                }
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
