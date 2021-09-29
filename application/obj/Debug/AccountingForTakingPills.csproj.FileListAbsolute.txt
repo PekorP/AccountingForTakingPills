@@ -107,3 +107,4 @@ C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Deb
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.csproj.CopyComplete
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.exe
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.pdb
+C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.Authorization.resources
