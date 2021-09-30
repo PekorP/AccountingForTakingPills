@@ -108,3 +108,4 @@ C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Deb
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.exe
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.pdb
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.Authorization.resources
+C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.Registration.resources

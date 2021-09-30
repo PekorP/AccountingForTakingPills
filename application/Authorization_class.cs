@@ -26,9 +26,28 @@ namespace AccountingForTakingPills
             } 
         }
 
-        public static User Registration()
+        public static User Registration(string name, string login, string password, char sex)
         {
-            return new User();
+            try
+            {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    User user = new User() { Name = name, Login = login, Password = password, Sex = sex };
+                    var  isExistUser = db.Users.Where(u => u.Login == user.Login).Any();
+                    if (isExistUser == true)
+                        return new User();
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    user = db.Users.Where(u => u.Login == user.Login && u.Password == user.Password).First();
+                    return user;
+
+                }
+            }
+            catch(Exception ex)
+            {
+                return new User();
+            }
+
         }
 
     }

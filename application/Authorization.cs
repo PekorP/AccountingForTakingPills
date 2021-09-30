@@ -28,7 +28,7 @@ namespace AccountingForTakingPills
 
                 if (answer == DialogResult.Yes)
                 {
-                    Registration registration = new Registration();
+                    Registration registration = new Registration(user.Login, user.Password);
                     registration.Visible = true;
                     this.Visible = false;
                     return;
