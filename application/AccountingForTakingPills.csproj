@@ -168,6 +168,12 @@
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization_class.cs" />
+    <Compile Include="BuyDrugs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyDrugs.Designer.cs">
+      <DependentUpon>BuyDrugs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs" />
     <Compile Include="Drug.cs" />
     <Compile Include="ListOfDrugs.cs" />
@@ -189,6 +195,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyDrugs.resx">
+      <DependentUpon>BuyDrugs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

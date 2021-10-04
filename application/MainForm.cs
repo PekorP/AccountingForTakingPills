@@ -22,34 +22,28 @@ namespace AccountingForTakingPills
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "м")
-            {
+            if (user.Sex.ToString().ToLower() == "м")
                 pictureBox1.Image = Properties.Resources.medsister;
-            } if (textBox1.Text == "ж")
-            {
-                pictureBox1.Image = Properties.Resources.medbrother;
-            }
-            pictureBox1.Visible = true;
-            if (textBox1.Text != "")
-                System.Diagnostics.Process.Start($"https://apteka.ru/search/?q={textBox1.Text}&page=1");
             else
-            {
-                MessageBox.Show("Test");
-            }
+                pictureBox1.Image = Properties.Resources.medbrother;
+            pictureBox1.Visible = true;
+            label1.Text += $"\n{user.Name}";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void WorkWithListOfDrugs(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://apteka.ru");
+
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        private void CheckUseOfDrugs(object sender, EventArgs e)
         {
-            MessageBox.Show(monthCalendar1.SelectionRange.Start.ToString().Substring(0,10));
-            //MessageBox.Show(DateTime.Compare(DateTime.Today, new DateTime(2021,10,1)) + "");
+
+        }
+
+        private void BuyDrugs(object sender, EventArgs e)
+        {
+            BuyDrugs buyDrugs = new BuyDrugs();
+            buyDrugs.Visible = true;
         }
     }
 }
