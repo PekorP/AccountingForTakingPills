@@ -32,7 +32,8 @@ namespace AccountingForTakingPills
 
         private void WorkWithListOfDrugs(object sender, EventArgs e)
         {
-
+            ListOfDrugsForm listOfDrugs = new ListOfDrugsForm(user);
+            listOfDrugs.Visible = true;
         }
 
         private void CheckUseOfDrugs(object sender, EventArgs e)
@@ -44,6 +45,11 @@ namespace AccountingForTakingPills
         {
             BuyDrugs buyDrugs = new BuyDrugs();
             buyDrugs.Visible = true;
+        }
+
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

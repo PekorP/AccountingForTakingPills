@@ -110,3 +110,4 @@ C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Deb
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.Authorization.resources
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.Registration.resources
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.BuyDrugs.resources
+C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.ListOfDrugsForm.resources

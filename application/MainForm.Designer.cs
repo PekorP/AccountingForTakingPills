@@ -34,6 +34,7 @@ namespace AccountingForTakingPills
             this.bListOfDrugs = new System.Windows.Forms.Button();
             this.bUseFrugs = new System.Windows.Forms.Button();
             this.bBuyDrugs = new System.Windows.Forms.Button();
+            this.bExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,12 +105,28 @@ namespace AccountingForTakingPills
             this.bBuyDrugs.UseVisualStyleBackColor = false;
             this.bBuyDrugs.Click += new System.EventHandler(this.BuyDrugs);
             // 
+            // bExit
+            // 
+            this.bExit.BackColor = System.Drawing.Color.Crimson;
+            this.bExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bExit.Font = new System.Drawing.Font("Kristen ITC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bExit.Location = new System.Drawing.Point(645, 25);
+            this.bExit.Name = "bExit";
+            this.bExit.Size = new System.Drawing.Size(279, 54);
+            this.bExit.TabIndex = 9;
+            this.bExit.Text = "Выход";
+            this.bExit.UseVisualStyleBackColor = false;
+            this.bExit.Click += new System.EventHandler(this.bExit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(964, 593);
+            this.Controls.Add(this.bExit);
             this.Controls.Add(this.bBuyDrugs);
             this.Controls.Add(this.bUseFrugs);
             this.Controls.Add(this.bListOfDrugs);
@@ -134,5 +151,6 @@ namespace AccountingForTakingPills
         private System.Windows.Forms.Button bListOfDrugs;
         private System.Windows.Forms.Button bUseFrugs;
         private System.Windows.Forms.Button bBuyDrugs;
+        private System.Windows.Forms.Button bExit;
     }
 }

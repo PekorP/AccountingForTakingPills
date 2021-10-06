@@ -177,6 +177,12 @@
     <Compile Include="Category.cs" />
     <Compile Include="Drug.cs" />
     <Compile Include="ListOfDrugs.cs" />
+    <Compile Include="ListOfDrugsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListOfDrugsForm.Designer.cs">
+      <DependentUpon>ListOfDrugsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListOfUseDrugs.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -193,11 +199,15 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="WorkWithListOfDrugs.cs" />
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BuyDrugs.resx">
       <DependentUpon>BuyDrugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListOfDrugsForm.resx">
+      <DependentUpon>ListOfDrugsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
