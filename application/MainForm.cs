@@ -12,37 +12,44 @@ namespace AccountingForTakingPills
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        User user;
+        public MainForm(User incommingUser)
         {
             InitializeComponent();
+            user = incommingUser;
         }
 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-          
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "м")
-            {
+            if (user.Sex.ToString().ToLower() == "м")
                 pictureBox1.Image = Properties.Resources.medsister;
-            } if (textBox1.Text == "ж")
-            {
-                pictureBox1.Image = Properties.Resources.medbrother;
-            }
-            pictureBox1.Visible = true;
-            if (textBox1.Text != "")
-                System.Diagnostics.Process.Start($"https://apteka.ru/search/?q={textBox1.Text}&page=1");
             else
-            {
-                MessageBox.Show("Test");
-            }
+                pictureBox1.Image = Properties.Resources.medbrother;
+            pictureBox1.Visible = true;
+            label1.Text += $"\n{user.Name}";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void WorkWithListOfDrugs(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://apteka.ru");
+            ListOfDrugsForm listOfDrugs = new ListOfDrugsForm(user);
+            listOfDrugs.Visible = true;
+        }
+
+        private void CheckUseOfDrugs(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BuyDrugs(object sender, EventArgs e)
+        {
+            BuyDrugs buyDrugs = new BuyDrugs();
+            buyDrugs.Visible = true;
+        }
+
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
