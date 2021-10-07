@@ -34,9 +34,12 @@ namespace AccountingForTakingPills
                 return;
             if(isDrugDeleteFromList == false)
                 MessageBox.Show("Лекарство не удалось удалить из списка", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            else 
                 MessageBox.Show("Лекарство удалено из списка лекарств, а также из списка приёма!", "Удачное удаление лекарства из списка",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            lbListOfDrugs.Items.Clear();
+            lbListOfDrugs.Items.Add("Название лекарства");
+            ListOfDrugsForm_Load(sender, e);
         }
 
         private void ListOfDrugsForm_Load(object sender, EventArgs e)
