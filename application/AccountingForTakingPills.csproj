@@ -161,6 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
+    <Compile Include="EditDrugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDrugForm.Designer.cs">
+      <DependentUpon>EditDrugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="WorkWithListOfDrugs.cs" />
+    <EmbeddedResource Include="EditDrugForm.resx">
+      <DependentUpon>EditDrugForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>

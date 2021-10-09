@@ -87,6 +87,7 @@ namespace AccountingForTakingPills
             this.bEditDrug.TabIndex = 9;
             this.bEditDrug.Text = "Редактировать лекарство";
             this.bEditDrug.UseVisualStyleBackColor = false;
+            this.bEditDrug.Click += new System.EventHandler(this.EditDrug);
             // 
             // bDeleteDrug
             // 
@@ -116,6 +117,7 @@ namespace AccountingForTakingPills
             this.bShowInfoAboutDrug.TabIndex = 11;
             this.bShowInfoAboutDrug.Text = "Просмотр информации о лекарстве";
             this.bShowInfoAboutDrug.UseVisualStyleBackColor = false;
+            this.bShowInfoAboutDrug.Click += new System.EventHandler(this.ShowInfoAboutDrug);
             // 
             // ListOfDrugsForm
             // 

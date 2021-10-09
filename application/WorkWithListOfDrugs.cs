@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,64 @@ namespace AccountingForTakingPills
                 {
                     return null;
                 }
+            }
+        }
+
+        public static Drug GetDrug(string drugName)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    var drug = db.Drugs.Where(d => d.Name == drugName).First();
+                    if (drug.Id == 0)
+                        return null;
+                    return drug;
+                }
+                catch (Exception e) { return null; }
+            }
+        }
+
+        public static void EditRowInList(ListOfDrugs listOfDrugs, int userId, int drugId)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    var oldList = GetListOfDrugs(userId, drugId);
+                    oldList = listOfDrugs; 
+                    db.Entry(oldList).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception e) { }
+            }
+        }
+
+        public static ListOfDrugs GetListOfDrugs(User user, string drugName)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    var drug = GetDrug(drugName);
+                    if (drug == null)
+                        return null;
+                    return db.ListsOfDrugs.Where(l => l.UserId == user.Id && l.DrugId == drug.Id).First();
+                    
+                }
+                catch (Exception e) { return null; }
+            }
+        }
+
+        public static ListOfDrugs GetListOfDrugs(int userId, int drugId)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    return db.ListsOfDrugs.Where(l => l.UserId == userId && l.DrugId == drugId).First();
+                }
+                catch (Exception e) { return null; }
             }
         }
     }

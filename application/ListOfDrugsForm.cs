@@ -58,5 +58,30 @@ namespace AccountingForTakingPills
             if(lbListOfDrugs.Items.Count != 1)
                 lbListOfDrugs.SelectedIndex = 1;
         }
+
+        private void ShowInfoAboutDrug(object sender, EventArgs e)
+        {
+            var drugName = lbListOfDrugs.SelectedItem.ToString();
+            var drug = WorkWithListOfDrugs.GetDrug(drugName);
+            var listOfDrugs = WorkWithListOfDrugs.GetListOfDrugs(user, drugName);
+            if (drug == null || listOfDrugs == null)
+                return;
+            MessageBox.Show($"Название - {drug.Name}\nДата начала приёма - {listOfDrugs.DateOfBegin}\nДата окончания приёма\n" +
+                $"{listOfDrugs.DateOfEnd}\nКоличество таблеток за приём - {listOfDrugs.CountOfDrugsPerUse}\nКоличество приёмов в день - " +
+                $"{listOfDrugs.CountOfUsePerDay}", $"Информация о лекарстве {drug.Name}");
+        }
+
+        private void EditDrug(object sender, EventArgs e)
+        {
+            if ((lbListOfDrugs.SelectedIndex == -1) || (lbListOfDrugs.SelectedIndex == 0))
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+            var drugName = lbListOfDrugs.SelectedItem.ToString();
+            var listOfDrugs = WorkWithListOfDrugs.GetListOfDrugs(user, drugName);
+            EditDrugForm editDrug = new EditDrugForm(listOfDrugs, drugName);
+            editDrug.Visible = true;
+        }
     }
 }
