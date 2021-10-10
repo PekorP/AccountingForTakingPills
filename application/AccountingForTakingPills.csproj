@@ -160,6 +160,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDrugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDrugForm.Designer.cs">
+      <DependentUpon>AddDrugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="EditDrugForm.cs">
       <SubType>Form</SubType>
@@ -206,6 +212,9 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="WorkWithListOfDrugs.cs" />
+    <EmbeddedResource Include="AddDrugForm.resx">
+      <DependentUpon>AddDrugForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditDrugForm.resx">
       <DependentUpon>EditDrugForm.cs</DependentUpon>
     </EmbeddedResource>

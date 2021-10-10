@@ -83,5 +83,11 @@ namespace AccountingForTakingPills
             EditDrugForm editDrug = new EditDrugForm(listOfDrugs, drugName);
             editDrug.Visible = true;
         }
+
+        private void AddDrugInList(object sender, EventArgs e)
+        {
+            AddDrugForm addDrug = new AddDrugForm(user);
+            addDrug.Visible = true;
+        }
     }
 }

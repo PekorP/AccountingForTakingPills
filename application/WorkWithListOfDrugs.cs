@@ -77,6 +77,27 @@ namespace AccountingForTakingPills
             }
         }
 
+        public static List<Drug> ShowDrugs()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    var listofUserDrugs = new List<Drug>();
+                    var drugs = db.Drugs.ToList();
+                    foreach (var drug in drugs)
+                    {
+                        listofUserDrugs.Add(db.Drugs.Where(d => d.Id == drug.Id).First());
+                    }
+                    return listofUserDrugs;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
         public static Drug GetDrug(string drugName)
         {
             using (ApplicationContext db = new ApplicationContext())

@@ -62,6 +62,7 @@ namespace AccountingForTakingPills
             this.bAddDrugs.TabIndex = 7;
             this.bAddDrugs.Text = "Добавить лекарство";
             this.bAddDrugs.UseVisualStyleBackColor = false;
+            this.bAddDrugs.Click += new System.EventHandler(this.AddDrugInList);
             // 
             // label1
             // 
