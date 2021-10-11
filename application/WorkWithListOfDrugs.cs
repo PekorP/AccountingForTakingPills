@@ -35,6 +35,54 @@ namespace AccountingForTakingPills
             }
         }
 
+        public static bool AddDrugInDB(string nameOfDrug, int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    Drug drug = new Drug();
+                    drug.Name = nameOfDrug;
+                    drug.CategoryId = id;
+
+                    db.Add(drug);
+                    db.SaveChanges();
+                    return true;
+
+                } catch (Exception e) { return false; }
+            }
+        }
+
+        public static List<Category> GetCategories()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+
+                    var categories = db.Categories.ToList();
+                    return categories;
+
+                }
+                catch (Exception e) { return null; }
+            }
+        }
+
+        public static Category GetCategories(string nameOfCategory)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+
+                    var category = db.Categories.Where(c => c.NameOfCategory == nameOfCategory).First();
+                    return category;
+
+                }
+                catch (Exception e) { return null; }
+            }
+        }
+
         private static void DeleteDrugFromListOfUse(User user, Drug drug)
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -73,6 +121,23 @@ namespace AccountingForTakingPills
                 catch(Exception e)
                 {
                     return null;
+                }
+            }
+        }
+
+        internal static bool AddDrugInList(ListOfDrugs listOfDrugs)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    db.ListsOfDrugs.Add(listOfDrugs);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
                 }
             }
         }

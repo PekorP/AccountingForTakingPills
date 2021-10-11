@@ -65,11 +65,19 @@ namespace AccountingForTakingPills
 
         private void AddDrug(object sender, EventArgs e)
         {
+            if(tbCountOfDrugsPerUse.Text == "" || tbCountOfUsePerDay.Text == "")
+            {
+                MessageBox.Show("Заполните все поля", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             listOfDrugs.DateOfBegin = lDateOfBegin.Text;
             listOfDrugs.DateOfEnd = lDateOfEnd.Text;
             listOfDrugs.CountOfDrugsPerUse = int.Parse(tbCountOfDrugsPerUse.Text);
             listOfDrugs.CountOfUsePerDay = int.Parse(tbCountOfUsePerDay.Text);
             listOfDrugs.UserId = user.Id;
+            var drug = WorkWithListOfDrugs.GetDrug(lbListOfDrugs.SelectedItem.ToString());
+            listOfDrugs.DrugId = drug.Id;
             var dayOfUse = (calDateOfEnd.SelectionStart - calDateOfBegin.SelectionStart).TotalDays;
             if (dayOfUse < 0)
             {
@@ -77,7 +85,17 @@ namespace AccountingForTakingPills
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            listOfDrugs.TotalCountOfDrugsPerCourse = (int)dayOfUse * listOfDrugs.CountOfDrugsPerUse * listOfDrugs.CountOfUsePerDay;
+            listOfDrugs.TotalCountOfDrugsPerCourse = (int)(dayOfUse+1) * listOfDrugs.CountOfDrugsPerUse * listOfDrugs.CountOfUsePerDay;
+            var isAddedDrug = WorkWithListOfDrugs.AddDrugInList(listOfDrugs);
+            if(isAddedDrug == true)
+            {
+                MessageBox.Show("Лекарство добавлено в список!", "Удачное добавление лекарства в список",
+                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
         }
 
         private void tbFindDrug_TextChanged(object sender, EventArgs e)
@@ -85,7 +103,6 @@ namespace AccountingForTakingPills
             lAddedDrug.Text = "Название добавляемого лекарства - ";
             lbListOfDrugs.Items.Clear();
 
-            // Если есть текст -- фильтруем элементы, если нет -- добавляем все элементы.
             if (string.IsNullOrWhiteSpace(tbFindDrug.Text))
             {
                 lbListOfDrugs.Items.AddRange(namesOfDrugs);
@@ -106,6 +123,13 @@ namespace AccountingForTakingPills
         {
             lAddedDrug.Text = "Название добавляемого лекарства - ";
             lAddedDrug.Text += lbListOfDrugs.SelectedItem;
+        }
+
+        private void bAddDrugInDB_Click(object sender, EventArgs e)
+        {
+            AddDrugInDB addDrugDB = new AddDrugInDB(user);
+            addDrugDB.Visible = true;
+            this.Close();
         }
     }
 }

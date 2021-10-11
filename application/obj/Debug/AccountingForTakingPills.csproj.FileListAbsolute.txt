@@ -113,3 +113,4 @@ C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Deb
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.ListOfDrugsForm.resources
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.EditDrugForm.resources
 C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.AddDrugForm.resources
+C:\Users\pasha\Desktop\курсач\AccountingForTakingPills\application\obj\Debug\AccountingForTakingPills.AddDrugInDB.resources

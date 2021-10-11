@@ -166,6 +166,12 @@
     <Compile Include="AddDrugForm.Designer.cs">
       <DependentUpon>AddDrugForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddDrugInDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDrugInDB.Designer.cs">
+      <DependentUpon>AddDrugInDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="EditDrugForm.cs">
       <SubType>Form</SubType>
@@ -214,6 +220,9 @@
     <Compile Include="WorkWithListOfDrugs.cs" />
     <EmbeddedResource Include="AddDrugForm.resx">
       <DependentUpon>AddDrugForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDrugInDB.resx">
+      <DependentUpon>AddDrugInDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditDrugForm.resx">
       <DependentUpon>EditDrugForm.cs</DependentUpon>

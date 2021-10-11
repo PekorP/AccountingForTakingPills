@@ -67,7 +67,7 @@ namespace AccountingForTakingPills
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            listOfDrugs.TotalCountOfDrugsPerCourse = (int)dayOfUse * listOfDrugs.CountOfDrugsPerUse * listOfDrugs.CountOfUsePerDay;
+            listOfDrugs.TotalCountOfDrugsPerCourse = (int)(dayOfUse + 1) * listOfDrugs.CountOfDrugsPerUse * listOfDrugs.CountOfUsePerDay;
             WorkWithListOfDrugs.EditRowInList(listOfDrugs, listOfDrugs.UserId, listOfDrugs.DrugId);
             MessageBox.Show("Данные успешно изменены", "Успех",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -46,9 +46,7 @@ namespace AccountingForTakingPills
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lAddedDrug = new System.Windows.Forms.Label();
-            this.tbAddDrug = new System.Windows.Forms.TextBox();
             this.bAddDrugInDB = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lDateOfBegin
@@ -236,14 +234,6 @@ namespace AccountingForTakingPills
             this.lAddedDrug.TabIndex = 40;
             this.lAddedDrug.Text = "Название добавляемого лекарства -  ";
             // 
-            // tbAddDrug
-            // 
-            this.tbAddDrug.Location = new System.Drawing.Point(1243, 501);
-            this.tbAddDrug.Multiline = true;
-            this.tbAddDrug.Name = "tbAddDrug";
-            this.tbAddDrug.Size = new System.Drawing.Size(396, 42);
-            this.tbAddDrug.TabIndex = 41;
-            // 
             // bAddDrugInDB
             // 
             this.bAddDrugInDB.BackColor = System.Drawing.Color.SlateGray;
@@ -251,20 +241,13 @@ namespace AccountingForTakingPills
             this.bAddDrugInDB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bAddDrugInDB.Font = new System.Drawing.Font("Kristen ITC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAddDrugInDB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bAddDrugInDB.Location = new System.Drawing.Point(1243, 607);
+            this.bAddDrugInDB.Location = new System.Drawing.Point(1243, 491);
             this.bAddDrugInDB.Name = "bAddDrugInDB";
             this.bAddDrugInDB.Size = new System.Drawing.Size(396, 101);
             this.bAddDrugInDB.TabIndex = 42;
             this.bAddDrugInDB.Text = "Добавить лекарство в базу";
             this.bAddDrugInDB.UseVisualStyleBackColor = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1243, 563);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(394, 24);
-            this.comboBox1.TabIndex = 43;
+            this.bAddDrugInDB.Click += new System.EventHandler(this.bAddDrugInDB_Click);
             // 
             // AddDrugForm
             // 
@@ -272,9 +255,7 @@ namespace AccountingForTakingPills
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(1669, 720);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.bAddDrugInDB);
-            this.Controls.Add(this.tbAddDrug);
             this.Controls.Add(this.lAddedDrug);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -321,8 +302,6 @@ namespace AccountingForTakingPills
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lAddedDrug;
-        private System.Windows.Forms.TextBox tbAddDrug;
         private System.Windows.Forms.Button bAddDrugInDB;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
