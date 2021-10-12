@@ -125,7 +125,7 @@ namespace AccountingForTakingPills
             }
         }
 
-        internal static bool AddDrugInList(ListOfDrugs listOfDrugs)
+        public static bool AddDrugInList(ListOfDrugs listOfDrugs)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -172,6 +172,20 @@ namespace AccountingForTakingPills
                     var drug = db.Drugs.Where(d => d.Name == drugName).First();
                     if (drug.Id == 0)
                         return null;
+                    return drug;
+                }
+                catch (Exception e) { return null; }
+            }
+        }
+
+
+        public static Drug GetDrug(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                try
+                {
+                    var drug = db.Drugs.Where(d => d.Id == id).First();
                     return drug;
                 }
                 catch (Exception e) { return null; }

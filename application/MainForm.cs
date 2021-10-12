@@ -38,7 +38,8 @@ namespace AccountingForTakingPills
 
         private void CheckUseOfDrugs(object sender, EventArgs e)
         {
-
+            ListOfUseDrugsForm useDrugs = new ListOfUseDrugsForm(user);
+            useDrugs.Visible = true;
         }
 
         private void BuyDrugs(object sender, EventArgs e)

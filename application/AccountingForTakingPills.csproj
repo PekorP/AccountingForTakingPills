@@ -202,6 +202,12 @@
       <DependentUpon>ListOfDrugsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ListOfUseDrugs.cs" />
+    <Compile Include="ListOfUseDrugsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListOfUseDrugsForm.Designer.cs">
+      <DependentUpon>ListOfUseDrugsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,7 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="WorkWithListOfDrugs.cs" />
+    <Compile Include="WorkWithListOfUseDrugs.cs" />
     <EmbeddedResource Include="AddDrugForm.resx">
       <DependentUpon>AddDrugForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListOfDrugsForm.resx">
       <DependentUpon>ListOfDrugsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListOfUseDrugsForm.resx">
+      <DependentUpon>ListOfUseDrugsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
