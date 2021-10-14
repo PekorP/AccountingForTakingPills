@@ -22,16 +22,29 @@ namespace AccountingForTakingPills
             }
         }
 
-        internal static int GetCountOfUseDrug(string date, int drugId)
+        internal static int GetCountOfUseDrug(string date, int drugId, User user)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
                 try
                 {
-                    var count = db.ListsOfUseDrugs.Count(c => c.DateOfUseDrug == date && c.DrugId == drugId);
+                    var count = db.ListsOfUseDrugs.Count(c => c.DateOfUseDrug == date && c.DrugId == drugId && c.UserId == user.Id);
                     return count;
                 }
                 catch (Exception e) { return 0; }
+            }
+        }
+
+        internal static bool UseDrug(ListOfUseDrugs listUse, ListOfDrugs listDrugs)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                
+                    db.ListsOfUseDrugs.Add(listUse);
+                    WorkWithListOfDrugs.EditRowInList(listDrugs, listDrugs.UserId, listDrugs.DrugId);
+                    db.SaveChanges();
+                    return true;
+                
             }
         }
     }

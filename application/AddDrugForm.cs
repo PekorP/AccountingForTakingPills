@@ -96,6 +96,9 @@ namespace AccountingForTakingPills
             {
                 MessageBox.Show("Error");
             }
+            ListOfDrugsForm l = new ListOfDrugsForm(user);
+            l.Visible = true;
+            this.Close();
         }
 
         private void tbFindDrug_TextChanged(object sender, EventArgs e)

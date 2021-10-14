@@ -24,7 +24,6 @@ namespace AccountingForTakingPills
                         return false;
                     db.ListsOfDrugs.Remove(drugInList);
                     db.SaveChanges();
-                    DeleteDrugFromListOfUse(user, drug);
                     return true;
                 }
                 catch (Exception e)
@@ -80,27 +79,6 @@ namespace AccountingForTakingPills
 
                 }
                 catch (Exception e) { return null; }
-            }
-        }
-
-        private static void DeleteDrugFromListOfUse(User user, Drug drug)
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                try
-                {
-                    var listOfUse = db.ListsOfUseDrugs.Where(l => l.UserId == user.Id && l.DrugId == drug.Id);
-                    if (listOfUse != null)
-                    {
-                        foreach (var row in listOfUse)
-                        {
-                            db.ListsOfUseDrugs.Remove(row);
-                        }
-                        db.SaveChanges();
-                    }
-                }
-                catch(Exception e)
-                { }
             }
         }
 
