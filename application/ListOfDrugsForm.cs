@@ -82,7 +82,7 @@ namespace AccountingForTakingPills
             var listOfDrugs = WorkWithListOfDrugs.GetListOfDrugs(user, drugName);
             EditDrugForm editDrug = new EditDrugForm(listOfDrugs, drugName);
             editDrug.Visible = true;
-        }
+        }       
 
         private void AddDrugInList(object sender, EventArgs e)
         {

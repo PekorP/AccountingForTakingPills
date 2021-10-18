@@ -45,21 +45,34 @@ namespace AccountingForTakingPills
 
         private void ListOfUseDrugsForm_Load(object sender, EventArgs e)
         {
+            label1.Text = monthCalendar1.SelectionStart.ToString().Substring(0, 10);
             var drugs = WorkWithListOfDrugs.ShowDrugs(user);
             if (drugs == null || drugs.Count == 0)
                 MessageBox.Show("У Вас пока нет лекарств в списке", "Предупреждение",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             else
             {
+                
                 foreach (var drug in drugs)
                 {
-                    lbDrugs.Items.Add(drug.Name);
+                    var list = WorkWithListOfDrugs.GetListOfDrugs(user.Id, drug.Id);
+
+                    int day = int.Parse(list.DateOfEnd.Substring(0, 2));
+                    int month = int.Parse(list.DateOfEnd.Substring(3, 2));
+                    int year = int.Parse(list.DateOfEnd.Substring(6, 4));
+                    DateTime date = new DateTime(year, month, day);
+
+                    if (monthCalendar1.SelectionStart.CompareTo(date) == 1)
+                        WorkWithListOfDrugs.DeleteDrug(drug.Name, user);
+                    else
+                        lbDrugs.Items.Add(drug.Name);
                 }
             }
             if (lbDrugs.Items.Count != 0)
                 lbDrugs.SelectedIndex = 0;
             ShowRowsOfUse();
-            label1.Text =  monthCalendar1.SelectionStart.ToString().Substring(0,10);
+            
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -85,6 +98,13 @@ namespace AccountingForTakingPills
             listUse.DateOfUseDrug = monthCalendar1.SelectionStart.ToString().Substring(0, 10);
 
             var listDrugs = WorkWithListOfDrugs.GetListOfDrugs(user, lbDrugs.SelectedItem.ToString());
+
+            var dateB = DateTime.Parse(listDrugs.DateOfBegin);
+            var dateE = DateTime.Parse(listDrugs.DateOfEnd);
+            if (dateB > monthCalendar1.SelectionEnd || dateE < monthCalendar1.SelectionStart) {
+                MessageBox.Show($"Дата начала приёма - {dateB}\nДата окончания приёма - {dateE}\nСегодняшняя дата - {monthCalendar1.SelectionStart}");
+                return; }
+
             var countOfDrugsPerUse = listDrugs.CountOfDrugsPerUse;
             var totalCountOfDrugs = listDrugs.TotalCountOfDrugsPerCourse;
 
