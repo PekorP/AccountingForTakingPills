@@ -91,6 +91,7 @@ namespace AccountingForTakingPills
             this.tbCountOfUsePerDay.Name = "tbCountOfUsePerDay";
             this.tbCountOfUsePerDay.Size = new System.Drawing.Size(217, 48);
             this.tbCountOfUsePerDay.TabIndex = 20;
+            this.tbCountOfUsePerDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCountOfUsePerDay_KeyPress);
             // 
             // tbCountOfDrugsPerUse
             // 
@@ -103,6 +104,7 @@ namespace AccountingForTakingPills
             this.tbCountOfDrugsPerUse.Name = "tbCountOfDrugsPerUse";
             this.tbCountOfDrugsPerUse.Size = new System.Drawing.Size(217, 48);
             this.tbCountOfDrugsPerUse.TabIndex = 19;
+            this.tbCountOfDrugsPerUse.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCountOfDrugsPerUse_KeyPress);
             // 
             // label4
             // 

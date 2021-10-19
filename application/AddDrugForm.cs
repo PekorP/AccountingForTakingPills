@@ -71,12 +71,21 @@ namespace AccountingForTakingPills
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             listOfDrugs.DateOfBegin = lDateOfBegin.Text;
             listOfDrugs.DateOfEnd = lDateOfEnd.Text;
             listOfDrugs.CountOfDrugsPerUse = int.Parse(tbCountOfDrugsPerUse.Text);
             listOfDrugs.CountOfUsePerDay = int.Parse(tbCountOfUsePerDay.Text);
             listOfDrugs.UserId = user.Id;
             var drug = WorkWithListOfDrugs.GetDrug(lbListOfDrugs.SelectedItem.ToString());
+            var list = WorkWithListOfDrugs.GetListOfDrugs(user.Id, drug.Id);
+            if(list != null)
+            {
+                MessageBox.Show("Это лекарство уже есть в Вашем списке!", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             listOfDrugs.DrugId = drug.Id;
             var dayOfUse = (calDateOfEnd.SelectionStart - calDateOfBegin.SelectionStart).TotalDays;
             if (dayOfUse < 0)
@@ -133,6 +142,22 @@ namespace AccountingForTakingPills
             AddDrugInDB addDrugDB = new AddDrugInDB(user);
             addDrugDB.Visible = true;
             this.Close();
+        }
+
+        private void tbCountOfDrugsPerUse_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbCountOfUsePerDay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

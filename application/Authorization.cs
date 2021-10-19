@@ -19,6 +19,13 @@ namespace AccountingForTakingPills
 
         private void EnterInTheSystem(object sender, EventArgs e)
         {
+            if (tbLogin.Text == "" || tbPassword.Text == "")
+            {
+                MessageBox.Show("Заполните все поля", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             User user = new User() { Login = tbLogin.Text, Password = tbPassword.Text };
             User incommingUser = Authorization_class.Enter(user);
             if(incommingUser.Id == 0)

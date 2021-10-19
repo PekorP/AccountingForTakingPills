@@ -32,6 +32,12 @@ namespace AccountingForTakingPills
 
         private void RegistrationInTheSystem(object sender, EventArgs e)
         {
+            if (tbLogin.Text == "" || tbName.Text == "" || tbPassword.Text == "")
+            {
+                MessageBox.Show("Заполните все поля", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             char sex = 'М';
             if (rbSexW.Checked == true)
                 sex = 'Ж';

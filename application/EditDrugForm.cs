@@ -56,6 +56,13 @@ namespace AccountingForTakingPills
 
         private void SaveEdit(object sender, EventArgs e)
         {
+            if (tbCountOfDrugsPerUse.Text == "" || tbCountOfUsePerDay.Text == "")
+            {
+                MessageBox.Show("Заполните все поля", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             listOfDrugs.DateOfBegin = lDateOfBegin.Text;
             listOfDrugs.DateOfEnd = lDateOfEnd.Text;
             listOfDrugs.CountOfDrugsPerUse = int.Parse(tbCountOfDrugsPerUse.Text);
@@ -71,6 +78,22 @@ namespace AccountingForTakingPills
             WorkWithListOfDrugs.EditRowInList(listOfDrugs, listOfDrugs.UserId, listOfDrugs.DrugId);
             MessageBox.Show("Данные успешно изменены", "Успех",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void tbCountOfDrugsPerUse_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbCountOfUsePerDay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
