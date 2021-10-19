@@ -23,25 +23,18 @@ namespace AccountingForTakingPills
 
         private void EditDrugForm_Load(object sender, EventArgs e)
         {
+            //изменяем навзание формы и заполняем данными из списка лекарств остальные элементы
             this.Text += $" {drugName}";
             lDrugName.Text += $" {drugName}";
+
             tbCountOfDrugsPerUse.Text = listOfDrugs.CountOfDrugsPerUse.ToString();
             tbCountOfUsePerDay.Text = listOfDrugs.CountOfUsePerDay.ToString();
+
             lDateOfBegin.Text = calDateOfBegin.SelectionStart.ToString().Substring(0, 10);
             lDateOfEnd.Text = calDateOfEnd.SelectionStart.ToString().Substring(0, 10);
 
-            int dayDOB = int.Parse(listOfDrugs.DateOfBegin.Substring(0, 2));
-            int monthDOB = int.Parse(listOfDrugs.DateOfBegin.Substring(3, 2));
-            int yearDOB = int.Parse(listOfDrugs.DateOfBegin.Substring(6, 4));
-            DateTime dateOfBegin = new DateTime(yearDOB, monthDOB, dayDOB);
-
-            int dayDOE = int.Parse(listOfDrugs.DateOfEnd.Substring(0, 2));
-            int monthDOE = int.Parse(listOfDrugs.DateOfEnd.Substring(3, 2));
-            int yearDOE = int.Parse(listOfDrugs.DateOfEnd.Substring(6, 4));
-            DateTime dateOfEnd = new DateTime(yearDOE, monthDOE, dayDOE);
-
-            calDateOfBegin.SetDate(dateOfBegin);
-            calDateOfEnd.SetDate(dateOfEnd);
+            calDateOfBegin.SetDate(DateTime.Parse(listOfDrugs.DateOfBegin));
+            calDateOfEnd.SetDate(DateTime.Parse(listOfDrugs.DateOfEnd));
         }
 
         private void calDateOfBegin_DateChanged(object sender, DateRangeEventArgs e)
@@ -63,10 +56,13 @@ namespace AccountingForTakingPills
                 return;
             }
 
+            //изменяем свойства, беря информацию с элементов формы
             listOfDrugs.DateOfBegin = lDateOfBegin.Text;
             listOfDrugs.DateOfEnd = lDateOfEnd.Text;
             listOfDrugs.CountOfDrugsPerUse = int.Parse(tbCountOfDrugsPerUse.Text);
             listOfDrugs.CountOfUsePerDay = int.Parse(tbCountOfUsePerDay.Text);
+
+            //проверяем не больше ли дата начала даты окончания
             var dayOfUse = (calDateOfEnd.SelectionStart - calDateOfBegin.SelectionStart).TotalDays;
             if (dayOfUse < 0)
             {
@@ -74,6 +70,7 @@ namespace AccountingForTakingPills
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            //рассчитываем общее количество таблеток за курс (кол-во дней * кол-во таблеток за приём * кол-во приёмов в день)
             listOfDrugs.TotalCountOfDrugsPerCourse = (int)(dayOfUse + 1) * listOfDrugs.CountOfDrugsPerUse * listOfDrugs.CountOfUsePerDay;
             WorkWithListOfDrugs.EditRowInList(listOfDrugs, listOfDrugs.UserId, listOfDrugs.DrugId);
             MessageBox.Show("Данные успешно изменены", "Успех",

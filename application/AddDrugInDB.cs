@@ -43,6 +43,7 @@ namespace AccountingForTakingPills
 
         private void AddDrugInDB_Load(object sender, EventArgs e)
         {
+            //Добавление категорий в ComboBox
             tbAddDrug.Focus();
             var categories = WorkWithListOfDrugs.GetCategories();
             if (categories != null) {

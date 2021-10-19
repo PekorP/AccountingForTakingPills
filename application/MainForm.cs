@@ -22,6 +22,7 @@ namespace AccountingForTakingPills
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //в зависимости от пола выводим картинку
             if (user.Sex.ToString().ToLower() == "м")
                 pictureBox1.Image = Properties.Resources.medsister;
             else

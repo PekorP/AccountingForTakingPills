@@ -22,6 +22,7 @@ namespace AccountingForTakingPills
                     var drugInList = db.ListsOfDrugs.Where(l => l.UserId == user.Id && l.DrugId == drug.Id).First();
                     if (drugInList.Id == 0)
                         return false;
+                    //удаляем из списка лекарств запись с выбранным лекарством
                     db.ListsOfDrugs.Remove(drugInList);
                     db.SaveChanges();
                     return true;
@@ -82,6 +83,7 @@ namespace AccountingForTakingPills
             }
         }
 
+        //получаем лекарства определенного пользователя (из его списка)
         public static List<Drug> ShowDrugs(User user)
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -120,6 +122,7 @@ namespace AccountingForTakingPills
             }
         }
 
+        //получаем все лекарства из базы
         public static List<Drug> ShowDrugs()
         {
             using (ApplicationContext db = new ApplicationContext())

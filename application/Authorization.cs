@@ -28,7 +28,9 @@ namespace AccountingForTakingPills
 
             User user = new User() { Login = tbLogin.Text, Password = tbPassword.Text };
             User incommingUser = Authorization_class.Enter(user);
-            if(incommingUser.Id == 0)
+            //если пользователя нет в системе, то предлагаем зарегистрироваться (открываем форму регистрации)
+            //при этом данные с формы входа логин и пароль переносятся на форму регистрации
+            if (incommingUser.Id == 0)
             {
                 DialogResult answer =  MessageBox.Show("Извините, но такого пользователя нет в системе. Желаете зарегистрироваться ?", "Ошибка входа",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -40,6 +42,7 @@ namespace AccountingForTakingPills
                     this.Visible = false;
                     return;
                 }
+                //если не соглашаемся то очищаем поля
                 else if (answer == DialogResult.No)
                 {
                     tbLogin.Text = "";
@@ -48,6 +51,7 @@ namespace AccountingForTakingPills
                 }
             }
 
+            //при успешном входе открываем главную форму
             MainForm mainForm = new MainForm(incommingUser);
             mainForm.Visible = true;
             this.Visible = false;
@@ -55,6 +59,7 @@ namespace AccountingForTakingPills
 
         private void RegistrationInTheSystem(object sender, EventArgs e)
         {
+            //открытие формы регистрации
             Registration registration = new Registration();
             registration.Visible = true;
             this.Visible = false;

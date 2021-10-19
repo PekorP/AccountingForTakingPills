@@ -41,7 +41,6 @@ namespace AccountingForTakingPills
             char sex = 'М';
             if (rbSexW.Checked == true)
                 sex = 'Ж';
-            //MessageBox.Show(tbName.Text + " " + tbLogin.Text + " " + tbPassword.Text + " " + sex);
             user = Authorization_class.Registration(tbName.Text, tbLogin.Text, tbPassword.Text, sex);
             if (user.Id == 0)
             {

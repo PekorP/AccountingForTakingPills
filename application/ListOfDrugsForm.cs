@@ -22,6 +22,7 @@ namespace AccountingForTakingPills
         private void DeleteDrugFromList(object sender, EventArgs e)
         {
             bool isDrugDeleteFromList;
+            //проверка выбрано ли лекарство
             if ((lbListOfDrugs.SelectedIndex == -1) || (lbListOfDrugs.SelectedIndex == 0)) {
                 MessageBox.Show("Error");
                 return; }
@@ -32,18 +33,22 @@ namespace AccountingForTakingPills
                 isDrugDeleteFromList = WorkWithListOfDrugs.DeleteDrug(drug, user);
             else
                 return;
-            if(isDrugDeleteFromList == false)
+            if (isDrugDeleteFromList == false)
                 MessageBox.Show("Лекарство не удалось удалить из списка", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else 
+            else
+            {
                 MessageBox.Show("Лекарство удалено из списка лекарств!", "Удачное удаление лекарства из списка",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lbListOfDrugs.Items.Clear();
-            lbListOfDrugs.Items.Add("Название лекарства");
-            ListOfDrugsForm_Load(sender, e);
+                //обновляем список лекарств
+                lbListOfDrugs.Items.Clear();
+                lbListOfDrugs.Items.Add("Название лекарства");
+                ListOfDrugsForm_Load(sender, e);
+            }
         }
 
         private void ListOfDrugsForm_Load(object sender, EventArgs e)
         { 
+            //получаем лекарства из списка
             var drugs = WorkWithListOfDrugs.ShowDrugs(user);
             if(drugs == null || drugs.Count == 0)
                 MessageBox.Show("У Вас пока нет лекарств в списке", "Предупреждение",
@@ -61,6 +66,7 @@ namespace AccountingForTakingPills
 
         private void ShowInfoAboutDrug(object sender, EventArgs e)
         {
+            //получаем запись из списка лекарств и выводим информацию о выбранном лекарстве
             var drugName = lbListOfDrugs.SelectedItem.ToString();
             var drug = WorkWithListOfDrugs.GetDrug(drugName);
             var listOfDrugs = WorkWithListOfDrugs.GetListOfDrugs(user, drugName);
@@ -78,6 +84,7 @@ namespace AccountingForTakingPills
                 MessageBox.Show("Error");
                 return;
             }
+            //получаем запись из списка лекарств и передаём в форму редактирования лекарства, вызываем её
             var drugName = lbListOfDrugs.SelectedItem.ToString();
             var listOfDrugs = WorkWithListOfDrugs.GetListOfDrugs(user, drugName);
             EditDrugForm editDrug = new EditDrugForm(listOfDrugs, drugName);
@@ -86,6 +93,7 @@ namespace AccountingForTakingPills
 
         private void AddDrugInList(object sender, EventArgs e)
         {
+            //открытие формы добавления лекарства
             AddDrugForm addDrug = new AddDrugForm(user);
             addDrug.Visible = true;
             this.Close();

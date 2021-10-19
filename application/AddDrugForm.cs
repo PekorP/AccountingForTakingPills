@@ -20,6 +20,7 @@ namespace AccountingForTakingPills
         {
             InitializeComponent();
             this.user = user;
+            //создаём объект для добавления записи в БД (запись в списке лекарств)
             listOfDrugs = new ListOfDrugs();
         }
 
@@ -35,18 +36,12 @@ namespace AccountingForTakingPills
 
         private void AddDrugForm_Load(object sender, EventArgs e)
         {
-            
             lDateOfBegin.Text = calDateOfBegin.SelectionStart.ToString().Substring(0, 10);
             lDateOfEnd.Text = calDateOfEnd.SelectionStart.ToString().Substring(0, 10);
             this.Width = 1300;
             this.Height = 650;
 
             var drugs = WorkWithListOfDrugs.ShowDrugs();
-            namesOfDrugs = new string[drugs.Count];
-            for(int i =0; i < drugs.Count; i++)
-            {
-                namesOfDrugs[i] = drugs[i].Name.ToString().ToLower();
-            }
             if (drugs == null || drugs.Count == 0)
             {
                 MessageBox.Show("Error", "Error",
@@ -55,6 +50,13 @@ namespace AccountingForTakingPills
             }
             else
             {
+                namesOfDrugs = new string[drugs.Count];
+                for(int i =0; i < drugs.Count; i++)
+                {
+                //получаем названия всех лекарств в базе
+                    namesOfDrugs[i] = drugs[i].Name.ToString().ToLower();
+                }
+                //Отображаем лекарства в ListBox + название выбранного лекарства
                 lbListOfDrugs.Items.AddRange(namesOfDrugs);
                 lbListOfDrugs.SelectedIndex = 0;
                 lAddedDrug.Text = "Название добавляемого лекарства - ";
@@ -72,11 +74,14 @@ namespace AccountingForTakingPills
                 return;
             }
 
+            //инициализируем свойства выбранными значениями на форме
             listOfDrugs.DateOfBegin = lDateOfBegin.Text;
             listOfDrugs.DateOfEnd = lDateOfEnd.Text;
             listOfDrugs.CountOfDrugsPerUse = int.Parse(tbCountOfDrugsPerUse.Text);
             listOfDrugs.CountOfUsePerDay = int.Parse(tbCountOfUsePerDay.Text);
             listOfDrugs.UserId = user.Id;
+
+            //инициализируем лекарство, если его ещё нет в списке
             var drug = WorkWithListOfDrugs.GetDrug(lbListOfDrugs.SelectedItem.ToString());
             var list = WorkWithListOfDrugs.GetListOfDrugs(user.Id, drug.Id);
             if(list != null)
@@ -85,8 +90,8 @@ namespace AccountingForTakingPills
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             listOfDrugs.DrugId = drug.Id;
+
             var dayOfUse = (calDateOfEnd.SelectionStart - calDateOfBegin.SelectionStart).TotalDays;
             if (dayOfUse < 0)
             {
@@ -94,8 +99,10 @@ namespace AccountingForTakingPills
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            //рассчитываем общее количество таблеток за курс (кол-во дней * кол-во таблеток за приём * кол-во приёмов в день)
             listOfDrugs.TotalCountOfDrugsPerCourse = (int)(dayOfUse+1) * listOfDrugs.CountOfDrugsPerUse * listOfDrugs.CountOfUsePerDay;
             var isAddedDrug = WorkWithListOfDrugs.AddDrugInList(listOfDrugs);
+            //добавляем лекарство в список и проверяем успешно ли добавили
             if(isAddedDrug == true)
             {
                 MessageBox.Show("Лекарство добавлено в список!", "Удачное добавление лекарства в список",
@@ -117,12 +124,15 @@ namespace AccountingForTakingPills
 
             if (string.IsNullOrWhiteSpace(tbFindDrug.Text))
             {
+                //добавляем все лекарства из базы, если в строке поиска ничего нет
                 lbListOfDrugs.Items.AddRange(namesOfDrugs);
             }
             else
             {
+                //поиск лекарства, начинающегося с введённого в TextBox текста и добавление в ListBox
                 lbListOfDrugs.Items.AddRange(namesOfDrugs.Where(s => s.StartsWith(tbFindDrug.Text)).ToArray());
             }
+
             if (lbListOfDrugs.Items.Count != 0)
             {
                 lbListOfDrugs.SelectedIndex = 0;
@@ -139,6 +149,7 @@ namespace AccountingForTakingPills
 
         private void bAddDrugInDB_Click(object sender, EventArgs e)
         {
+            //вызов формы добавления лекарства в базу
             AddDrugInDB addDrugDB = new AddDrugInDB(user);
             addDrugDB.Visible = true;
             this.Close();
